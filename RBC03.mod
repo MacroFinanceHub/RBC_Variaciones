@@ -1,8 +1,12 @@
-//   Teoría Macrodinámica 
-//        2016 - II 
-//       FIEECS - UNI
+%%%%%%%%%%%%%%%%%%%%%   Teoría Macrodinámica %%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%       FIEECS - UNI     %%%%%%%%%%%%%%%%%%%%%%
 
-// Modelo RBC Básico no lineal, componentes exponenciales para log-linealización
+// Código que describe un modelo RBC básico loglinealizado (expansión de
+// Taylor de 1er orden). Las CPO se presentan de forma no lineal.
+// El Estado Estacionario es obtenido manualmente.
+// La función de utilidad corresponde a la forma GHH. Por tanto, hay
+// variaciones en la oferta laboral y en la ecuación de Euler.
+// © Carlos Rojas Quiroz 
 
 var lab c w r y kap innv z g;
 predetermined_variables kap;
