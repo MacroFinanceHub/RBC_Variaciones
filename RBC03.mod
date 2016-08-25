@@ -1,8 +1,8 @@
-//   TeorÌa Macrodin·mica 
+//   Teor√≠a Macrodin√°mica 
 //        2016 - II 
 //       FIEECS - UNI
 
-// Modelo RBC B·sico no lineal, componentes exponenciales para log-linealizaciÛn
+// Modelo RBC B√°sico no lineal, componentes exponenciales para log-linealizaci√≥n
 
 var lab c w r y kap innv z g;
 predetermined_variables kap;
@@ -32,8 +32,9 @@ C_Y    = c_ss/y_ss;
 I_Y    = inv_ss/y_ss;
 
 model;
-theta*exp(lab)^chi=exp(w);
-(exp(c)-theta*exp(lab)^(1+chi)/(1+chi))^(-sigma) = betta*(exp(c(+1))-theta*exp(lab(+1))^(1+chi)/(1+chi))^(-sigma)*(1+exp(r(+1)));
+exp(w)       =theta*exp(lab)^chi;
+(exp(c)-theta*exp(lab)^(1+chi)/(1+chi))^(-sigma) = 
+betta*(exp(c(+1))-theta*exp(lab(+1))^(1+chi)/(1+chi))^(-sigma)*(1+exp(r(+1)));
 exp(w)       =alpha*exp(y)/exp(lab);
 exp(r)+delta =(1-alpha)*exp(y)/exp(kap);
 exp(y)       =exp(c)+exp(innv)+exp(g);
