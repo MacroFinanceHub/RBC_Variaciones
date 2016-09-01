@@ -6,8 +6,7 @@
 // Codigo que describe un modelo RBC basico loglinealizado (expansion de
 // Taylor de 1er orden). Las CPO se presentan de forma no lineal.
 // El Estado Estacionario es obtenido manualmente.
-// La funcion de utilidad corresponde a la forma GHH. Por tanto, hay
-// variaciones en la oferta laboral y en la ecuacion de Euler.
+// La funcion de utilidad corresponde a la forma GHH. 
 // (c) Carlos Rojas Quiroz 
 
 var lab c w r y kap innv z g;
