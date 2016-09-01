@@ -1,12 +1,14 @@
-%%%%%%%%%%%%%%%%%%%%%   Teoría Macrodinámica %%%%%%%%%%%%%%%%%%%%%% 
-%%%%%%%%%%%%%%%%%%%%%       FIEECS - UNI     %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%% Teoría Macrodinámica %%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%    FIEECS - UNI      %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-// Código que describe un modelo RBC básico loglinealizado (expansión de
+// Codigo que describe un modelo RBC basico loglinealizado (expansion de
 // Taylor de 1er orden). Las CPO se presentan de forma no lineal.
 // El Estado Estacionario es obtenido manualmente.
-// La función de utilidad corresponde a la forma GHH. Por tanto, hay
-// variaciones en la oferta laboral y en la ecuación de Euler.
-// © Carlos Rojas Quiroz 
+// La funcion de utilidad corresponde a la forma GHH. Por tanto, hay
+// variaciones en la oferta laboral y en la ecuacion de Euler.
+// (c) Carlos Rojas Quiroz 
 
 var lab c w r y kap innv z g;
 predetermined_variables kap;
