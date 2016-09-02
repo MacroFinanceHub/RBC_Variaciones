@@ -12,7 +12,7 @@
 var lab c w r y kap innv z g;
 predetermined_variables kap;
 varexo e_z e_g;
-parameters alpha delta betta sigma rho_z rho_g 
+parameters alpha delta betta sigma theta rho_z rho_g 
 z_ss lab_ss r_ss  kap_ss w_ss y_ss c_ss inv_ss g_ss C_Y I_Y G_Y;
 
 alpha  = 1-0.33;
