@@ -10,3 +10,7 @@ RBC05.mod: Función de Utilidad con Coeficiente de Aversión Relativa al Riesgo 
 RBC06.mod: Función de Utilidad logarítmica-lineal con hábitos de consumo interno.
 
 RBC07.mod: Función de Utilidad logarítmica-lineal con hábitos de consumo externo.
+
+RBC08.mod: Función de Utilidad logarítmico-lineal con ratio de uso de capital en forma de costo.
+
+RBC09.mod: Función de Utilidad logarítmico-lineal con ratio de uso de capital con depreciación variable. 
