@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%% Teoría Macrodinámica %%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%% TeorÃ­a MacrodinÃ¡mica %%%%%%%%%%%%%%%%%%%%%% 
 %%%%%%%%%%%%%%%%%%%%%    FIEECS - UNI      %%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -7,7 +7,7 @@
 // Taylor de 1er orden). Las CPO se presentan de forma no lineal.
 // El Estado Estacionario es obtenido manualmente.
 // La funcion de utilidad corresponde a la forma logaritmico-lineal.
-// Se introduce una depreciación endógena al grado de utilización del capital.
+// Se introduce un ratio de uso de capital con depreciaciÃ³n variable. 
 // (c) Carlos Rojas Quiroz 
 
 var lab c w r y kap rk u innv z g;
