@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%% TeorÌa Macrodin·mica %%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%% Teor√≠a Macrodin√°mica %%%%%%%%%%%%%%%%%%%%%% 
 %%%%%%%%%%%%%%%%%%%%%    FIEECS - UNI      %%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -19,31 +19,31 @@ z_ss lab_ss r_ss  kap_ss w_ss y_ss c_ss inv_ss u_ss g_ss C_Y I_Y G_Y;
 alpha  = 1-0.33;
 delta  = 0.023;
 betta  = 0.99;
+theta  = 1/2.75;
 phi1   = 1/betta-1;
-phi2   = 1.00;
-I_Y    = 0.229298138541349;
+phi2   = 0.01;
 rho_z  = 0.95;
 rho_g  = 0.75;
+u_ss   = 1;
 z_ss   = 1;
 G_Y    = 0.155;
-lab_ss = 0.385844633250606;
-u_ss   = (delta*(1-alpha)*betta/I_Y-(1-betta*(1+phi1+phi2/2)))/(betta*(delta+phi1+phi2/2));
-theta  = 1/(1+(1-lab_ss)/lab_ss*alpha*z_ss/(1-I_Y-G_Y));
-y_ss   = z_ss^(1/alpha)*(((1-alpha)*betta/(1-betta+betta*(delta*u_ss+phi1*(u_ss-1)+phi2/2*(u_ss-1)^2)))^((1-alpha)/alpha))*lab_ss;
+lab_ss = 1/((1-theta)/(alpha*theta*z_ss)*((1-betta+alpha*betta*delta)/(1-betta+betta*delta)-G_Y)+1);
+y_ss   = z_ss*(((1-alpha)*betta/(1-betta+betta*delta))^((1-alpha)/alpha))*lab_ss;
 w_ss   = alpha*y_ss/lab_ss;
-kap_ss = (1-alpha)*betta/(1-betta+betta*(delta*u_ss+phi1*(u_ss-1)+phi2/2*(u_ss-1)^2))*y_ss;
-inv_ss = I_Y*y_ss;
-r_ss   = (1-alpha)*y_ss/(u_ss*kap_ss)-delta;
-c_ss   = (1-I_Y-G_Y)*y_ss;
+kap_ss = (1-alpha)*betta/(1-betta+betta*delta)*y_ss;
+inv_ss = delta*kap_ss;
+r_ss   = (1-alpha)*y_ss/kap_ss-delta;
+c_ss   = ((1-betta+alpha*betta*delta)/(1-betta+betta*delta)-G_Y)*y_ss;
 g_ss   = G_Y*y_ss;
 C_Y    = c_ss/y_ss;
+I_Y    = inv_ss/y_ss;
 
 model;
 theta/exp(c) =(1-theta)/((1-exp(lab))*exp(w));
 1/exp(c)     =betta*1/exp(c(+1))*(1+exp(r(+1))*exp(u(+1))-(phi1*(exp(u(+1))-1) + phi2/2*(exp(u(+1))-1)^2));
 exp(w)       =alpha*exp(y)/exp(lab);
-exp(r)+delta =(1-alpha)*exp(y)/(exp(kap)*exp(u));
-exp(y)       =exp(c)+exp(innv)+exp(g);
+exp(r)       =(1-alpha)*exp(y)/(exp(u)*exp(kap)) - delta;
+exp(y)       =exp(c)+exp(innv)+exp(g)+(phi1*(exp(u)-1) + phi2/2*(exp(u)-1)^2)*exp(kap);
 exp(kap(+1)) =(1-delta)*exp(kap)+exp(innv);
 exp(y)       =exp(z)*(exp(kap)*exp(u))^(1-alpha)*exp(lab)^alpha;
 exp(r)       =phi1 + phi2*(exp(u)-1);
