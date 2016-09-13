@@ -14,3 +14,9 @@ RBC07.mod: Función de Utilidad logarítmica-lineal con hábitos de consumo exte
 RBC08.mod: Función de Utilidad logarítmico-lineal con ratio de uso de capital en forma de costo.
 
 RBC09.mod: Función de Utilidad logarítmico-lineal con ratio de uso de capital con depreciación variable. 
+
+RBC10.mod: Función de Utilidad logarítmico-lineal con costos de ajuste a la inversión. 
+
+RBC11.mod: Función de Utilidad logarítmico-lineal con costos de ajuste al capital. 
+
+RBC12.mod: Función de Utilidad logarítmico-lineal con choque específico a la inversión. 
