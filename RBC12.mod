@@ -12,7 +12,7 @@
 
 var lab c w r y kap innv z zi g;
 predetermined_variables kap;
-varexo e_z e_g e_zi;
+varexo e_zi e_z e_g;
 parameters alpha delta betta theta rho_z rho_g rho_zi
 z_ss lab_ss r_ss  kap_ss w_ss y_ss c_ss inv_ss zi_ss g_ss C_Y I_Y G_Y;
 
@@ -68,7 +68,7 @@ shocks;
 var e_z; stderr 1;
 var e_g; stderr 1;
 var e_zi;stderr 1;
-var e_z, e_zi = 0.50;
+var e_zi, e_z = 0.50;
 end;
  
 resid;
