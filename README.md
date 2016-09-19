@@ -20,3 +20,7 @@ RBC10.mod: Función de Utilidad logarítmico-lineal con costos de ajuste a la in
 RBC11.mod: Función de Utilidad logarítmico-lineal con costos de ajuste al capital. 
 
 RBC12.mod: Función de Utilidad logarítmico-lineal con choque específico a la inversión. 
+
+RBC13.mod: Función de Utilidad logarítmico-lineal con dinero en la función de utilidad. 
+
+RBC14.mod: Función de Utilidad logarítmico-lineal con dinero en una restricción Cash-in-Advance. 
