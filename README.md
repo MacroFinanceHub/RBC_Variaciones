@@ -24,3 +24,5 @@ RBC12.mod: Función de Utilidad logarítmico-lineal con choque específico a la 
 RBC13.mod: Función de Utilidad logarítmico-lineal con dinero en la función de utilidad. 
 
 RBC14.mod: Función de Utilidad logarítmico-lineal con dinero en una restricción Cash-in-Advance. 
+
+RBC15.mod: Función de Utilidad logarítmico-lineal con trabajo indivisible a la Hansen.
