@@ -7,79 +7,64 @@
 // Taylor de 1er orden). Las CPO se presentan de forma no lineal.
 // El Estado Estacionario es obtenido manualmente.
 // La funcion de utilidad corresponde a la forma logaritmico-lineal.
-// Se incluye dinero en la función de utilidad.
+// Se incluye trabajo indivisible.
+// Se incluye una restricción Cash-in-Advance.
+// Se replica el modelo del capítulo 8 del McCandless (sin señoreaje)
 // (c) Carlos Rojas Quiroz 
 
-var lab c w r y kap innv m R inom pic z g;
+var r w c p lab kap m y g z pic;
 predetermined_variables kap;
-varexo e_z e_g e_m;
-parameters alpha delta betta theta psi chi pi_star rho_z rho_g rho_m 
-z_ss lab_ss r_ss kap_ss w_ss y_ss c_ss R_ss i_ss pi_ss m_ss inv_ss g_ss C_Y I_Y G_Y;
-
-alpha  = 1-0.33;
-delta  = 0.023;
-betta  = 0.99;
-theta  = 1/2.75;
-pi_star= 0.00;
-psi    = 1.00;
-chi    = 2.00;
-rho_z  = 0.95;
-rho_g  = 0.75;
-rho_m  = 0.50;
-z_ss   = 1;
-G_Y    = 0.155;
-lab_ss = 1/((1-theta)/(alpha*theta*z_ss)*((1-betta+alpha*betta*delta)/(1-betta+betta*delta)-G_Y)+1);
-y_ss   = z_ss*(((1-alpha)*betta/(1-betta+betta*delta))^((1-alpha)/alpha))*lab_ss;
-w_ss   = alpha*y_ss/lab_ss;
-kap_ss = (1-alpha)*betta/(1-betta+betta*delta)*y_ss;
-inv_ss = delta*kap_ss;
-r_ss   = (1-alpha)*y_ss/kap_ss-delta;
-c_ss   = ((1-betta+alpha*betta*delta)/(1-betta+betta*delta)-G_Y)*y_ss;
-g_ss   = G_Y*y_ss;
-C_Y    = c_ss/y_ss;
-I_Y    = inv_ss/y_ss;
-R_ss   = 1/betta-1;
-pi_ss  = pi_star;
-i_ss   = (1+R_ss)*(1+pi_ss)-1;
-m_ss   = psi^chi*c_ss^chi*((1+i_ss)/i_ss)^chi;
+varexo e_z e_g;
+parameters betta delta theta B rho_z rho_g r_ss w_ss c_ss p_ss lab_ss kap_ss y_ss g_ss z_ss pic_ss m_ss;
+betta  =0.990;
+delta  =0.025; 
+theta  =0.360;
+B      =-2.5805;
+rho_z  =0.750;
+rho_g  =0.500;
+g_ss   =1.200;
+r_ss   =1/betta-(1-delta);
+w_ss   =(1-theta)*(r_ss/theta)^(theta/(theta-1));
+c_ss   =-betta*w_ss/(g_ss*B);
+p_ss   =1/c_ss;
+kap_ss =c_ss/(r_ss/theta-delta);
+lab_ss =(r_ss/theta)^(1/(1-theta))*kap_ss;
+y_ss   =c_ss+delta*kap_ss;
+z_ss   =1;
+pic_ss =1;
+m_ss   =1;
 
 model;
-theta/exp(c) =(1-theta)/((1-exp(lab))*exp(w));
-1/exp(c)     =betta*1/exp(c(+1))*(1+exp(r(+1)));
-1/exp(c)     =betta*1/exp(c(+1))*(1+exp(R));
-exp(w)       =alpha*exp(y)/exp(lab);
-exp(r)+delta =(1-alpha)*exp(y)/exp(kap);
-exp(y)       =exp(c)+exp(innv)+exp(g);
-exp(kap(+1)) =(1-delta)*exp(kap)+exp(innv);
-exp(y)       =exp(z)*exp(kap)^(1-alpha)*exp(lab)^alpha;
-m-m(-1)      =(1-rho_m)*pi_star-(pic)+rho_m*(pic(-1))+rho_m*(m(-1)-m(-2)) + e_m;
-exp(m)       =psi^chi*exp(c)^chi*((1+exp(inom))/exp(inom))^chi;
-1+exp(R)     =(1+exp(inom))/(1+(pic(+1)));
-z            =(1-rho_z)*log(z_ss) + rho_z*z(-1) + e_z;
-g            =(1-rho_g)*log(g_ss) + rho_g*g(-1) + e_g;
+1/betta=exp(w)/exp(w(+1))*(1-delta+exp(r(+1)));
+B/(exp(w)*exp(p))=-betta/(exp(p(+1))*exp(c(+1))*exp(g(+1)));
+exp(p)*exp(c)=(exp(m(-1))+exp(g)-1)/exp(g);
+exp(kap(+1))+exp(m)/exp(p)=(1-delta)*exp(kap)+exp(w)*exp(lab)+exp(r)*exp(kap); 
+exp(w)=(1-theta)*exp(z)*(exp(kap)/exp(lab))^theta;
+exp(r)=theta*exp(z)*(exp(kap)/exp(lab))^(theta-1);
+exp(y)=exp(c)+delta*exp(kap);
+exp(m)=1;
+g=(1-rho_g)*log(g_ss)+rho_g*g(-1)+e_g;
+z=(1-rho_z)*log(z_ss)+rho_z*z(-1)+e_z;
+exp(pic)=exp(p)/exp(p(-1));
 end;
 
 steady_state_model;
-lab =log(lab_ss);
-c   =log(c_ss); 
-w   =log(w_ss); 
 r   =log(r_ss); 
-y   =log(y_ss); 
+w   =log(w_ss);
+c   =log(c_ss);
+p   =log(p_ss);
+lab =log(lab_ss); 
 kap =log(kap_ss); 
-innv=log(inv_ss); 
-R   =log(R_ss);
-m   =log(m_ss);
-pic =(pi_ss);
-inom=log(i_ss);
-z   =log(z_ss);
+y   =log(y_ss);
 g   =log(g_ss);
+z   =log(z_ss);
+pic =log(pic_ss);
+m   =log(m_ss);
 end;
 
 shocks;
-
 var e_z; stderr 0.01;
 var e_g; stderr 0.01;
-var e_m; stderr 0.01;
 end;
  
 resid;
