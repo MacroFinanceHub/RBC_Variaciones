@@ -9,6 +9,7 @@
 // La funcion de utilidad corresponde a la forma logaritmico-lineal.
 // Se incluye trabajo indivisble.
 // Se incluye dinero en la función de utilidad.
+// Se replica el modelo del capítulo 9 del McCandless.
 // (c) Carlos Rojas Quiroz 
 
 var r w c kap lab y M z g p m;
